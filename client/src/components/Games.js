@@ -24,7 +24,7 @@ const Games = ({ data: { allGames = [], loading } }) => {
   );
 };
 
-const allGamesQuery = gql`
+export const allGamesQuery = gql`
   query {
     allGames {
       _id

@@ -3,6 +3,7 @@ import { gql } from "apollo-boost";
 import { graphql } from "react-apollo";
 
 import GameForm from "./GameForm";
+import { allGamesQuery } from "./Games";
 
 class CreateGame extends Component {
   game = {
@@ -60,5 +61,5 @@ const createGameMutation = gql`
 `;
 
 export default graphql(createGameMutation, {
-  options: { refetchQueries: ["allGames"] }
+  options: { refetchQueries: [{ query: allGamesQuery }] }
 })(CreateGame);
