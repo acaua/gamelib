@@ -7,7 +7,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 const client = new ApolloClient({
-  uri: "https://server-xzmebjsxpo.now.sh"
+  uri: "https://server-ibvtokovfi.now.sh/"
 });
 
 const ApolloApp = (
