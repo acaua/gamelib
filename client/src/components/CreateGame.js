@@ -7,12 +7,12 @@ import { allGamesQuery } from "./Games";
 
 class CreateGame extends Component {
   game = {
-    title: "title27",
-    platform: "plat1",
-    genre: "genre1",
-    releaseYear: 2001,
-    rating: 2,
-    price: 20
+    title: "",
+    platform: "",
+    genre: "",
+    releaseYear: "",
+    rating: "",
+    price: ""
   };
 
   onSubmit(values, { setSubmitting, setErrors }) {
