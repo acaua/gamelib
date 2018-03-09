@@ -15,7 +15,7 @@ const Games = ({ data: { allGames = [], loading } }) => {
         {allGames.map(game => {
           return (
             <li key={game._id}>
-              <p> {game.title} </p>
+              <Link to={`/game/${game._id}`}>{game.title}</Link>
             </li>
           );
         })}
