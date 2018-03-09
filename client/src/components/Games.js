@@ -8,14 +8,18 @@ const Games = ({ data: { allGames = [], loading } }) => {
     return <div>Loading</div>;
   }
 
+  const totalPrice = allGames.reduce((sum, game) => sum + game.price, 0);
+
   return (
     <div>
       <Link to="/create-game">Create game</Link>
+      <p>Total price = {totalPrice}</p>
       <ul>
         {allGames.map(game => {
           return (
             <li key={game._id}>
               <Link to={`/game/${game._id}`}>{game.title}</Link>
+              price: {game.price}
             </li>
           );
         })}
@@ -29,6 +33,7 @@ export const allGamesQuery = gql`
     allGames {
       _id
       title
+      price
     }
   }
 `;
