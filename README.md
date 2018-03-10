@@ -12,10 +12,10 @@ Developed with ☕ and ❤️
 
 ## Pre-requisites
 
-1.  Mongodb: You can install it from <https://www.mongodb.com/> or get one for free from <https://mlab.com/>
-2.  Node.js <nodejs.org>
-3.  Yarn <http://yarnpkg.com/> (or you can use npm)
-4.  (optional, for deployment) Now <https://zeit.co/now>
+1.  Mongodb:<https://www.mongodb.com/> or you can get a free instance on <https://mlab.com/>
+2.  Node.js: <https://nodejs.org/en/>
+3.  Yarn: <http://yarnpkg.com/> (or you can use npm)
+4.  (optional, for deployment) Now: <https://zeit.co/now>
 
 ## General
 
