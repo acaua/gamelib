@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { gql } from "apollo-boost";
 import { graphql, compose } from "react-apollo";
-import { Segment, Grid } from "semantic-ui-react";
+import { Segment, Grid, Loader, Dimmer } from "semantic-ui-react";
 
 import GameForm from "./GameForm";
 import { gameQuery } from "./Game";
@@ -26,7 +26,11 @@ class EditGame extends Component {
     const { data: { game = [], loading } } = this.props;
 
     if (loading) {
-      return <div>Loading</div>;
+      return (
+        <Dimmer active>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      );
     }
 
     return (

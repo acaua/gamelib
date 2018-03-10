@@ -10,12 +10,18 @@ import {
   Button,
   Table,
   Rating,
-  Statistic
+  Statistic,
+  Loader,
+  Dimmer
 } from "semantic-ui-react";
 
 const Games = ({ data: { allGames = [], loading } }) => {
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <Dimmer active>
+        <Loader>Loading</Loader>
+      </Dimmer>
+    );
   }
 
   const totalPrice = allGames.reduce((sum, game) => sum + game.price, 0);

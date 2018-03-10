@@ -8,7 +8,9 @@ import {
   Rating,
   Segment,
   Header,
-  Grid
+  Grid,
+  Loader,
+  Dimmer
 } from "semantic-ui-react";
 
 import { allGamesQuery } from "./Games";
@@ -28,7 +30,11 @@ class Game extends Component {
     const { data: { game = [], loading } } = this.props;
 
     if (loading) {
-      return <div>Loading</div>;
+      return (
+        <Dimmer active>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      );
     }
 
     return (
