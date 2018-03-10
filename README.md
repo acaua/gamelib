@@ -4,9 +4,9 @@ Simple game library using React, GraphQL and MongoDB
 
 **Back-end** using **graphql-yoga** and **mongoose**
 
-Front-end using **React**, **apollo-bost**, **semantic-ui** and **formik**
+Front-end using **React**, **apollo-boost**, **semantic-ui** and **formik**
 
-Developed with ☕ and ❤️
+This is a pet project for studying purposes developed with ☕, 🍺, ❤️, and oxford comma.
 
 # Downloading and running instructions
 
