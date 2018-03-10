@@ -4,7 +4,7 @@ Simple game library using React, GraphQL and MongoDB
 
 **Back-end** using **graphql-yoga** and **mongoose**
 
-Front-end using **React**, **apollo-boost**, **semantic-ui** and **formik**
+**Front-end** using **React**, **apollo-boost**, **semantic-ui** and **formik**
 
 This is a pet project for studying purposes developed with ☕, 🍺, ❤️, and Oxford comma.
 
@@ -96,8 +96,7 @@ yarn build
 
 6.  (optional) Deploy it with now
 
-To deploy with now you cannot use your local graphql back-end server. You can deploy the server with now (see above) and use the url provided by now on the .env file
-If your build exceed the now maximum size, you can delete the map file with `rm ./build/static/js/*.map`
+To deploy with now you cannot use your local graphql back-end server. You can deploy the server with now (see above) and use the url provided by now on the .env file. If your build exceed the now maximum size, you can delete the map file with `rm ./build/static/js/*.map`
 
 ```
 cd build
