@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { gql } from "apollo-boost";
 import { graphql } from "react-apollo";
-import { Container, Segment, Grid } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 
 import GameForm from "./GameForm";
 import { allGamesQuery } from "./Games";
