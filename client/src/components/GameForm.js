@@ -1,37 +1,137 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
+import { Formik } from "formik";
 import Yup from "yup";
+import { Link } from "react-router-dom";
+import { Form, Label, Input, Rating, Grid, Button } from "semantic-ui-react";
 
 const InnerGameForm = ({
   values,
   errors,
   touched,
   handleChange,
+  setFieldValue,
   handleBlur,
   handleSubmit,
-  isSubmitting
+  isSubmitting,
+  cancelRedirectTo
 }) => (
-  <Form>
-    <Field type="text" name="title" />
-    {touched.title && errors.title && <div>{errors.title}</div>}
-    <Field type="text" name="platform" />
-    {touched.platform && errors.platform && <div>{errors.platform}</div>}
-    <Field type="text" name="genre" />
-    {touched.genre && errors.genre && <div>{errors.genre}</div>}
-    <Field type="text" name="releaseYear" />
-    {touched.releaseYear &&
-      errors.releaseYear && <div>{errors.releaseYear}</div>}
-    <Field type="text" name="rating" />
-    {touched.rating && errors.rating && <div>{errors.rating}</div>}
-    <Field type="text" name="price" />
-    {touched.price && errors.price && <div>{errors.price}</div>}
-    <button type="submit" disabled={isSubmitting}>
-      Submit
-    </button>
+  <Form onSubmit={handleSubmit}>
+    {console.log(cancelRedirectTo)}
+    <Form.Field required error={!!touched.title && !!errors.title}>
+      <Input
+        name="title"
+        placeholder="Title"
+        type="text"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.title}
+      />
+      {touched.title &&
+        errors.title && (
+          <Label basic color="red" pointing>
+            {errors.title}
+          </Label>
+        )}
+    </Form.Field>
+    <Form.Field required error={!!touched.platform && !!errors.platform}>
+      <Input
+        name="platform"
+        placeholder="Platform"
+        type="text"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.platform}
+      />
+      {touched.platform &&
+        errors.platform && (
+          <Label basic color="red" pointing>
+            {errors.platform}
+          </Label>
+        )}
+    </Form.Field>
+    <Form.Field required error={!!touched.genre && !!errors.genre}>
+      <Input
+        name="genre"
+        placeholder="Genre"
+        type="text"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.genre}
+      />
+      {touched.genre &&
+        errors.genre && (
+          <Label basic color="red" pointing>
+            {errors.genre}
+          </Label>
+        )}
+    </Form.Field>
+    <Form.Field required error={!!touched.releaseYear && !!errors.releaseYear}>
+      <Input
+        name="releaseYear"
+        placeholder="Year of release"
+        type="text"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.releaseYear}
+      />
+      {touched.releaseYear &&
+        errors.releaseYear && (
+          <Label basic color="red" pointing>
+            {errors.releaseYear}
+          </Label>
+        )}
+    </Form.Field>
+    <Form.Field required error={!!touched.price && !!errors.price}>
+      <Input
+        name="price"
+        placeholder="Price"
+        type="text"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.price}
+      />
+      {touched.price &&
+        errors.price && (
+          <Label basic color="red" pointing>
+            {errors.price}
+          </Label>
+        )}
+    </Form.Field>
+    <Grid divided="vertically" verticalAlign="middle">
+      <Grid.Row columns={2}>
+        <Grid.Column>
+          <h4>Rating:</h4>
+        </Grid.Column>
+        <Grid.Column textAlign="right">
+          <Rating
+            float="right"
+            icon="star"
+            rating={values.rating}
+            onRate={(e, { rating }) => setFieldValue("rating", rating)}
+            maxRating={5}
+            size="massive"
+          />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+    <Grid columns={2}>
+      <Grid.Column>
+        <Link to={cancelRedirectTo}>
+          <Button fluid disabled={isSubmitting}>
+            Cancel
+          </Button>
+        </Link>
+      </Grid.Column>
+      <Grid.Column>
+        <Button primary fluid type="submit" disabled={isSubmitting}>
+          Submit
+        </Button>
+      </Grid.Column>
+    </Grid>
   </Form>
 );
 
-const GameForm = ({ game, onSubmit }) => (
+const GameForm = ({ game, onSubmit, cancelRedirectTo }) => (
   <Formik
     initialValues={game}
     validationSchema={Yup.object().shape({
@@ -52,7 +152,9 @@ const GameForm = ({ game, onSubmit }) => (
         .positive()
     })}
     onSubmit={onSubmit}
-    component={InnerGameForm}
+    render={props => (
+      <InnerGameForm {...props} cancelRedirectTo={cancelRedirectTo} />
+    )}
   />
 );
 

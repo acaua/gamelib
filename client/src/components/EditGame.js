@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { gql } from "apollo-boost";
 import { graphql, compose } from "react-apollo";
+import { Container, Segment, Grid } from "semantic-ui-react";
 
 import GameForm from "./GameForm";
 import { gameQuery } from "./Game";
@@ -29,10 +30,19 @@ class EditGame extends Component {
     }
 
     return (
-      <div>
-        <h1>Update Game ...</h1>
-        <GameForm game={game} onSubmit={this.onSubmit.bind(this)} />
-      </div>
+      <Grid container centered columns={2}>
+        <Grid.Column>
+          <h1>Create a new game</h1>
+          <Segment>
+            <h1>Edit game</h1>
+            <GameForm
+              game={game}
+              cancelRedirectTo={`/game/${game._id}`}
+              onSubmit={this.onSubmit.bind(this)}
+            />
+          </Segment>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

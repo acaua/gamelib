@@ -2,10 +2,20 @@ import React, { Component } from "react";
 import { gql } from "apollo-boost";
 import { graphql, compose } from "react-apollo";
 import { Link } from "react-router-dom";
+import {
+  Table,
+  Button,
+  Rating,
+  Segment,
+  Header,
+  Grid
+} from "semantic-ui-react";
 
 import { allGamesQuery } from "./Games";
 
 class Game extends Component {
+  state = { deleteConfirmationOpen: false };
+
   handleClickDelete = () => {
     const _id = this.props.data.game._id;
 
@@ -22,18 +32,63 @@ class Game extends Component {
     }
 
     return (
-      <div>
-        <ul>
-          <p> title: {game.title} </p>
-          <p> platform: {game.platform} </p>
-          <p> genre: {game.genre} </p>
-          <p> releaseYear: {game.releaseYear} </p>
-          <p> rating: {game.rating} </p>
-          <p> price: {game.price} </p>
-        </ul>
-        <Link to={`/game/edit/${game._id}`}>Edit game</Link>
-        <button onClick={this.handleClickDelete}>Delete game</button>
-      </div>
+      <Grid container centered columns={2}>
+        <Grid.Column>
+          <Segment>
+            <Header as="h1">{game.title}</Header>
+            <Table definition>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>Platform</Table.Cell>
+                  <Table.Cell>{game.platform}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Genre</Table.Cell>
+                  <Table.Cell>{game.genre}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Year of release</Table.Cell>
+                  <Table.Cell>{game.releaseYear}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Price</Table.Cell>
+                  <Table.Cell>{game.price}</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Rating</Table.Cell>
+                  <Table.Cell>
+                    <Rating
+                      disabled
+                      icon="star"
+                      rating={game.rating}
+                      maxRating={5}
+                    />
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+            <Grid columns={2}>
+              <Grid.Column>
+                <Button negative fluid onClick={this.handleClickDelete}>
+                  Delete
+                </Button>
+              </Grid.Column>
+              <Grid.Column>
+                <Button
+                  primary
+                  fluid
+                  onClick={() =>
+                    this.props.history.push(`/game/edit/${game._id}`)
+                  }
+                >
+                  Edit
+                </Button>
+              </Grid.Column>
+            </Grid>
+          </Segment>
+          <Link to={"/"}>Back</Link>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
