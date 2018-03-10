@@ -6,7 +6,7 @@ Simple game library using React, GraphQL and MongoDB
 
 Front-end using **React**, **apollo-boost**, **semantic-ui** and **formik**
 
-This is a pet project for studying purposes developed with ☕, 🍺, ❤️, and oxford comma.
+This is a pet project for studying purposes developed with ☕, 🍺, ❤️, and Oxford comma.
 
 # Downloading and running instructions
 
